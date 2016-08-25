@@ -83,4 +83,22 @@ class GenusAdminController extends Controller
             'genusForm' => $form->createView()
         ]);
     }
+
+    /**
+     * @Route("/genus/{id}/delete", name="admin_genus_delete")
+     */
+    public function deleteAction(Genus $genus)
+    {
+        if (!$genus) {
+            throw $this->createNotFoundException('No guest found');
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($genus);
+        $em->flush();
+
+        $this->addFlash('danger', 'Genus deleted!');
+
+        return $this->redirectToRoute('admin_genus_list');
+    }
 }

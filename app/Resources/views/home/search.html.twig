@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="text-center margin--bot-huge"><h2>I'm sorry. There is no article with the name you searched for. <br>
+        Look through all the other exciting articles below, or <a href="{{ path('home') }}" style="color: #3a768f">return to home.</a></h2></div>
+<table class="table table-striped" style="max-width: 720px; margin: 0 auto;">
+    <thead>
+    <tr class="bg-info">
+        <th width="20%" align="center">Date added</th>
+        <th width="65%">Title</th>
+        <th align="center">Read article</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for article in articles %}
+        <tr>
+            <td>{{ article.date|date("m/d/Y") }}</td>
+            <td>{{ article.title }}</td>
+            <td align="center"><a href="{{ path('show_article', {'articleId': article.id}) }}"><button class="btn btn-success">Open</button></a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

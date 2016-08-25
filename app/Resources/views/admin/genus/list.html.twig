@@ -16,6 +16,7 @@
                         <th>Genus</th>
                         <th>SubFamily</th>
                         <th>&nbsp;</th>
+                        <th>&nbsp;</th>
                     </tr>
                     {% for genus in genuses %}
                         <tr>
@@ -23,6 +24,9 @@
                             <td>{{ genus.subFamily.name }}</td>
                             <td>
                                 <a href="{{ path('admin_genus_edit', {'id': genus.id}) }}" class="btn btn-xs btn-success"><span class="fa fa-pencil"></span></a>
+                            </td>
+                            <td>
+                                <a href="{{ path('admin_genus_delete', {'id': genus.id}) }}" class="btn btn-xs btn-danger"><span class="fa fa-trash"></span></a>
                             </td>
                         </tr>
                     {% endfor %}
